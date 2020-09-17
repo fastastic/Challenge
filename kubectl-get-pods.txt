@@ -1,0 +1,3 @@
+NAME                                      READY   STATUS    RESTARTS   AGE
+customnginx-deployment-57bf9cccf9-2nzhk   1/1     Running   0          3m26s
+customnginx-deployment-57bf9cccf9-42sd4   1/1     Running   0          3m28s

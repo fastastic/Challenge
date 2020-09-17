@@ -1,0 +1,26 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: customnginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: customnginx
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: customnginx
+    spec:
+      containers:
+      - name: customnginx
+        image: custom_nginx:1.19.10
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "1"
+          requests:
+            memory: "64Mi"
+            cpu: "0.5"
+        ports:
+        - containerPort: 80

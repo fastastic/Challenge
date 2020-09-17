@@ -1,0 +1,41 @@
+-> URL of the image used
+		https://hub.docker.com/_/nginx/?spm=5176.doc53764.2.3.gm0FWx
+
+-> Didn't see any kind of autoremove nor autoclean in alpine. Anyway I used a prebuild image by nginx with the proper version and with alpine installed also which is a lightweight linux.
+
+-> https://github.com/kubernetes/kubernetes/issues/50295
+	To solve a problem with kubernetes setup
+
+-> Used minikube to create the cluster locally to test the deployment.
+
+-> CPU and memory are already set in the deploy.yaml file. Must change if needed.
+
+-> Also I set the replicas to 2 but if more availability is needed you can increase the replicas.
+
+-> I attach also another dockerfile where I start with a pure alpine and then I install nginx. But, I didn't manage to install 1.19.2 version because the latest version is older than that.
+
+-> Must install requests python3 library with pip3 to run the monitoring script
+
+-> In order to get logs from /var/log/nginx I temporarily disable the log redirection in the docker image
+
+-> COMMANDS
+	-> Build the image (change directory to the root path of the repo)
+		$ docker build -t custom_nginx:1.19.10 .
+
+	-> Run the container
+		$ docker run -p 80:80 --name custom_nginx_container custom_nginx:1.19.10
+
+	-> Create the cluster with minikube
+		$ sudo minikube start --driver=none
+
+	-> Deploy the yaml file into the cluster
+		$ kubectl apply -f deploy.yaml
+
+	-> See deployment details
+		$ kubectl describe deployment customnginx-deployment
+
+	-> Get the status of the pods
+		$ kubectl get pods -l app=customnginx
+
+	-> Execute python monitoring script (I would put the script in a cron actually)
+		$ python3 monitoring.py
