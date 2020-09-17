@@ -6,8 +6,8 @@ LABEL maintainer="raulvalverdesanchez@gmail.com"
 COPY default.conf /etc/nginx/conf.d/
 
 # Redirecting nginx logs to the standard output
-#RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-#    && ln -sf /dev/stderr /var/log/nginx/error.log
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
 
 # To solve nginx: [emerg] open() "/run/nginx/nginx.pid" failed (2: No such file or directory) described in https://github.com/gliderlabs/docker-alpine/issues/185
 RUN mkdir -p /run/nginx
