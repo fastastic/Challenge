@@ -34,7 +34,7 @@ I got the logs executing the docker logs command specifying the container. Then 
 Both the monitoring and logging script i would put them on a cron to increase the automation of the process.
 
 ### CI/CD Pipeline
-Honestly I would like to test that on a real Jenkins or other CI/CD platform environment. Just divided the pipeline on four stages (the sections you demanded me).
+Honestly I would liked to test that on a real Jenkins or other CI/CD platform environment because I think I can show more of myself in a real Jenkins environment than in this Jenkinsfile. Just divided the pipeline on four stages (the sections you demanded me).
 
 In each stage (Docker build , Docker deploy, Kubernetes deploy and postscripts) I executed basically, the commands I executed in my machine.
 
